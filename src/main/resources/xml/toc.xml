@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Sample Table of Contents">
+	<topic label="This is where .."  href="src/main/resources/html/maintopic.html"> 
+		<topic label="..documentation can go" href="src/main/resources/html/subtopic.html"/> 
+	</topic>
+</toc>
