@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Cryostat Plugin for JDK Mission Control Help" topic="src/main/resources/html/toc.html">
+	<link toc="src/main/resources/xml/toc.xml" />
+</toc>

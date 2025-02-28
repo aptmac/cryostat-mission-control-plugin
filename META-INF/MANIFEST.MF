@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Cryostat Plugin for JDK Mission Control
+Bundle-SymbolicName: cryostat-plugin;singleton:=true
+Bundle-Vendor: Cryostat.io
+Bundle-Version: 4.1.0.qualifier
+Bundle-Activator: io.cryostat.CryostatPlugin
+Require-Bundle: org.apache.commons.commons-io,
+ org.eclipse.core.runtime,
+ org.eclipse.osgi,
+ org.eclipse.ui,
+ org.eclipse.jetty.ee9.server,
+ org.eclipse.jetty.ee9.servlet,
+ org.eclipse.jetty.ee9.websocket.api,
+ org.eclipse.jetty.ee9.websocket.server,
+ org.eclipse.jetty.server,
+ org.eclipse.jetty.servlet-api,
+ org.eclipse.jetty.util
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Automatic-Module-Name: io.cryostat.cryostat-plugin
+Bundle-ActivationPolicy: lazy
