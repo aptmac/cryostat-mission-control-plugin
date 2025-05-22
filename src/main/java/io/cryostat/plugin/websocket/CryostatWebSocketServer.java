@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.cryostat.websocket;
+package io.cryostat.plugin.websocket;
 
-import io.cryostat.CryostatPlugin;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
@@ -23,6 +22,8 @@ import org.eclipse.jetty.ee9.servlet.ServletContextHandler;
 import org.eclipse.jetty.ee9.websocket.server.config.JettyWebSocketServletContainerInitializer;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
+
+import io.cryostat.plugin.CryostatPlugin;
 
 public class CryostatWebSocketServer {
     private Server server;

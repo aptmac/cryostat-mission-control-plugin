@@ -4,7 +4,7 @@ Bundle-Name: Cryostat Plugin for JDK Mission Control
 Bundle-SymbolicName: cryostat-plugin;singleton:=true
 Bundle-Vendor: Cryostat.io
 Bundle-Version: 4.1.0.qualifier
-Bundle-Activator: io.cryostat.CryostatPlugin
+Bundle-Activator: io.cryostat.plugin.CryostatPlugin
 Require-Bundle: org.apache.commons.commons-io,
  org.eclipse.core.runtime,
  org.eclipse.osgi,
