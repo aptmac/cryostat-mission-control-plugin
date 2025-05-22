@@ -16,8 +16,8 @@
 package io.cryostat.plugin.preferences;
 
 public class PreferenceConstants {
-	public static final String P_PLUGIN_ENABLED = "cryostat.plugin.enabled";
-	public static final String P_PLUGIN_PORT = "cryostat.plugin.port";
-	public static final boolean DEFAULT_ENABLED = true;
-	public static final int DEFAULT_PORT = 8029;
+    public static final String P_PLUGIN_ENABLED = "cryostat.plugin.enabled";
+    public static final String P_PLUGIN_PORT = "cryostat.plugin.port";
+    public static final boolean DEFAULT_ENABLED = true;
+    public static final int DEFAULT_PORT = 8029;
 }

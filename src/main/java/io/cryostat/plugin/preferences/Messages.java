@@ -18,16 +18,16 @@ package io.cryostat.plugin.preferences;
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "io.cryostat.plugin.preferences.messages"; //$NON-NLS-1$
+    private static final String BUNDLE_NAME =
+            "io.cryostat.plugin.preferences.messages"; //$NON-NLS-1$
 
-	public static String CryostatPluginPreferencePage_DESCRIPTION;
-	public static String CryostatPluginPreferencePage_ENABLE;
-	public static String CryostatPluginPreferencePage_PORT;
+    public static String CryostatPluginPreferencePage_DESCRIPTION;
+    public static String CryostatPluginPreferencePage_ENABLE;
+    public static String CryostatPluginPreferencePage_PORT;
 
-	static {
-		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
-	}
+    static {
+        NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+    }
 
-	private Messages() {
-	}
+    private Messages() {}
 }

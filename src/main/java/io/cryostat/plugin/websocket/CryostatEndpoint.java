@@ -15,6 +15,7 @@
  */
 package io.cryostat.plugin.websocket;
 
+import io.cryostat.plugin.CryostatPlugin;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,8 +34,6 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.WorkbenchJob;
-
-import io.cryostat.plugin.CryostatPlugin;
 
 public class CryostatEndpoint extends WebSocketAdapter {
 

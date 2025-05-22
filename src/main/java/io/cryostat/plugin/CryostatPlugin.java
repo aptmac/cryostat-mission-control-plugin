@@ -17,10 +17,8 @@ package io.cryostat.plugin;
 
 import io.cryostat.plugin.preferences.PreferenceConstants;
 import io.cryostat.plugin.websocket.CryostatWebSocketServer;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.IStartup;
@@ -34,11 +32,10 @@ public class CryostatPlugin extends AbstractUIPlugin implements BundleActivator,
     private static CryostatPlugin plugin;
     private CryostatWebSocketServer server;
 
-    public CryostatPlugin() {
-    }
+    public CryostatPlugin() {}
 
     public static CryostatPlugin getDefault() {
-    	return plugin;
+        return plugin;
     }
 
     public static Logger getLogger() {
@@ -46,9 +43,9 @@ public class CryostatPlugin extends AbstractUIPlugin implements BundleActivator,
     }
 
     public void start(BundleContext bundleContext) throws Exception {
-    	super.start(bundleContext);
-    	this.getPreferenceStore().addPropertyChangeListener(preferenceChangeListener);
-    	plugin = this;
+        super.start(bundleContext);
+        this.getPreferenceStore().addPropertyChangeListener(preferenceChangeListener);
+        plugin = this;
         startServer(getCryostatPort());
         LOGGER.log(Level.INFO, "Cryostat Plugin for JDK Mission Control is live!");
     }
@@ -60,42 +57,44 @@ public class CryostatPlugin extends AbstractUIPlugin implements BundleActivator,
     }
 
     private void startServer(int port) {
-    	if (getPluginEnabled()) {
-    		server = new CryostatWebSocketServer(port);
-    	}
+        if (getPluginEnabled()) {
+            server = new CryostatWebSocketServer(port);
+        }
     }
 
     private void stopServer() {
-		try {
-			server.shutdown();
-		} catch (Exception e) {
-			LOGGER.log(Level.WARNING, "Error shutting down the Jetty WebSocket server", e);
-		}
+        try {
+            server.shutdown();
+        } catch (Exception e) {
+            LOGGER.log(Level.WARNING, "Error shutting down the Jetty WebSocket server", e);
+        }
     }
 
-    private IPropertyChangeListener preferenceChangeListener = new IPropertyChangeListener() {
-		@Override
-		public void propertyChange(PropertyChangeEvent event) {
-			if (event.getProperty().equals(PreferenceConstants.P_PLUGIN_ENABLED)) {
-				if (getPluginEnabled()) {
-					startServer(getCryostatPort());
-				} else {
-					stopServer();
-				}
-			}
-			if (event.getProperty().equals(PreferenceConstants.P_PLUGIN_PORT) && getPluginEnabled()) {
-				stopServer();
-				startServer(getCryostatPort());
-			}
-		}
-	};
+    private IPropertyChangeListener preferenceChangeListener =
+            new IPropertyChangeListener() {
+                @Override
+                public void propertyChange(PropertyChangeEvent event) {
+                    if (event.getProperty().equals(PreferenceConstants.P_PLUGIN_ENABLED)) {
+                        if (getPluginEnabled()) {
+                            startServer(getCryostatPort());
+                        } else {
+                            stopServer();
+                        }
+                    }
+                    if (event.getProperty().equals(PreferenceConstants.P_PLUGIN_PORT)
+                            && getPluginEnabled()) {
+                        stopServer();
+                        startServer(getCryostatPort());
+                    }
+                }
+            };
 
     private int getCryostatPort() {
-    	return this.getPreferenceStore().getInt(PreferenceConstants.P_PLUGIN_PORT);
+        return this.getPreferenceStore().getInt(PreferenceConstants.P_PLUGIN_PORT);
     }
 
     private boolean getPluginEnabled() {
-    	return this.getPreferenceStore().getBoolean(PreferenceConstants.P_PLUGIN_ENABLED);
+        return this.getPreferenceStore().getBoolean(PreferenceConstants.P_PLUGIN_ENABLED);
     }
 
     @Override
