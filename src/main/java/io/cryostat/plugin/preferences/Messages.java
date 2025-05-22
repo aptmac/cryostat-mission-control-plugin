@@ -13,17 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.cryostat.websocket;
+package io.cryostat.plugin.preferences;
 
-import org.eclipse.jetty.ee9.websocket.server.JettyServerUpgradeRequest;
-import org.eclipse.jetty.ee9.websocket.server.JettyServerUpgradeResponse;
-import org.eclipse.jetty.ee9.websocket.server.JettyWebSocketCreator;
+import org.eclipse.osgi.util.NLS;
 
-public class CryostatEndpointCreator implements JettyWebSocketCreator {
-    @Override
-    public Object createWebSocket(
-            JettyServerUpgradeRequest jettyServerUpgradeRequest,
-            JettyServerUpgradeResponse jettyServerUpgradeResponse) {
-        return new CryostatEndpoint();
-    }
+public class Messages extends NLS {
+	private static final String BUNDLE_NAME = "io.cryostat.plugin.preferences.messages"; //$NON-NLS-1$
+
+	public static String CryostatPluginPreferencePage_DESCRIPTION;
+	public static String CryostatPluginPreferencePage_ENABLE;
+	public static String CryostatPluginPreferencePage_PORT;
+
+	static {
+		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+	}
+
+	private Messages() {
+	}
 }

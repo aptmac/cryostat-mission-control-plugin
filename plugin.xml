@@ -13,8 +13,23 @@
       </toc>
    </extension>
 
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.openjdk.jmc.ui.preferences.MissionControlPage"
+            class="io.cryostat.plugin.preferences.CryostatPreferencePage"
+            id="io.cryostat.plugin.preferences.CryostatPreferencePage"
+            name="Cryostat Plugin"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="io.cryostat.plugin.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
    <extension point="org.eclipse.ui.startup">
-      <startup class="io.cryostat.CryostatPlugin"></startup>
+      <startup class="io.cryostat.plugin.CryostatPlugin"></startup>
    </extension>
 
 </plugin>
