@@ -15,6 +15,7 @@
  */
 package io.cryostat.plugin.preferences;
 
+import io.cryostat.plugin.CryostatPlugin;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
@@ -23,45 +24,53 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
-import io.cryostat.plugin.CryostatPlugin;
+public class CryostatPreferencePage extends FieldEditorPreferencePage
+        implements IWorkbenchPreferencePage {
 
-public class CryostatPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+    private IntegerFieldEditor portField;
 
-	private IntegerFieldEditor portField;
-	
-	public CryostatPreferencePage() {
-		super(GRID);
-		setPreferenceStore(CryostatPlugin.getDefault().getPreferenceStore());
-		setDescription(Messages.CryostatPluginPreferencePage_DESCRIPTION);
-	}
-	
-	@Override
-	public void init(IWorkbench workbench) {
-	}
+    public CryostatPreferencePage() {
+        super(GRID);
+        setPreferenceStore(CryostatPlugin.getDefault().getPreferenceStore());
+        setDescription(Messages.CryostatPluginPreferencePage_DESCRIPTION);
+    }
 
-	@Override
-	protected void createFieldEditors() {
-		addField(new BooleanFieldEditor(PreferenceConstants.P_PLUGIN_ENABLED, Messages.CryostatPluginPreferencePage_ENABLE, getFieldEditorParent()));
-		portField = new IntegerFieldEditor(PreferenceConstants.P_PLUGIN_PORT, Messages.CryostatPluginPreferencePage_PORT, getFieldEditorParent());
-		addField(portField);
-		enableCryostatFields(isCryostatPluginEnabled());
-	}
+    @Override
+    public void init(IWorkbench workbench) {}
 
-	@Override
-	public void propertyChange(PropertyChangeEvent event) {
-		if (event.getProperty().equals(FieldEditor.VALUE)) {
-			FieldEditor editor = (FieldEditor) event.getSource();
-			if (PreferenceConstants.P_PLUGIN_ENABLED.equals(editor.getPreferenceName())) {
-				enableCryostatFields((boolean) event.getNewValue());
-			}
-		}
-	}
+    @Override
+    protected void createFieldEditors() {
+        addField(
+                new BooleanFieldEditor(
+                        PreferenceConstants.P_PLUGIN_ENABLED,
+                        Messages.CryostatPluginPreferencePage_ENABLE,
+                        getFieldEditorParent()));
+        portField =
+                new IntegerFieldEditor(
+                        PreferenceConstants.P_PLUGIN_PORT,
+                        Messages.CryostatPluginPreferencePage_PORT,
+                        getFieldEditorParent());
+        addField(portField);
+        enableCryostatFields(isCryostatPluginEnabled());
+    }
 
-	private boolean isCryostatPluginEnabled() {
-		return CryostatPlugin.getDefault().getPreferenceStore().getBoolean(PreferenceConstants.P_PLUGIN_ENABLED);
-	}
-	
-	private void enableCryostatFields(boolean enable) {
-		portField.setEnabled(enable, getFieldEditorParent());
-	}
+    @Override
+    public void propertyChange(PropertyChangeEvent event) {
+        if (event.getProperty().equals(FieldEditor.VALUE)) {
+            FieldEditor editor = (FieldEditor) event.getSource();
+            if (PreferenceConstants.P_PLUGIN_ENABLED.equals(editor.getPreferenceName())) {
+                enableCryostatFields((boolean) event.getNewValue());
+            }
+        }
+    }
+
+    private boolean isCryostatPluginEnabled() {
+        return CryostatPlugin.getDefault()
+                .getPreferenceStore()
+                .getBoolean(PreferenceConstants.P_PLUGIN_ENABLED);
+    }
+
+    private void enableCryostatFields(boolean enable) {
+        portField.setEnabled(enable, getFieldEditorParent());
+    }
 }

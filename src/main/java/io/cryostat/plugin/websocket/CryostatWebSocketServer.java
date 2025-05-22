@@ -15,6 +15,7 @@
  */
 package io.cryostat.plugin.websocket;
 
+import io.cryostat.plugin.CryostatPlugin;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
@@ -22,8 +23,6 @@ import org.eclipse.jetty.ee9.servlet.ServletContextHandler;
 import org.eclipse.jetty.ee9.websocket.server.config.JettyWebSocketServletContainerInitializer;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
-
-import io.cryostat.plugin.CryostatPlugin;
 
 public class CryostatWebSocketServer {
     private Server server;
